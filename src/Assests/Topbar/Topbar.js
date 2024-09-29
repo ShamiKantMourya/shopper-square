@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Topbar.css";
 import { Container, Row, Col, Navbar, Nav, NavDropdown, } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';

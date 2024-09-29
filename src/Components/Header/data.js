@@ -53,7 +53,7 @@ export const cartIcon = (
   );
   
   export const logo = (
-    <img className="logo" src={Logo} />
+    <img className="logo" src={Logo} alt="logo"/>
   );
   
   
