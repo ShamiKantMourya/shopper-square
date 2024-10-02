@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "./Login.css";
-import { openEye, closeEye } from "../icons";
+// import { openEye, closeEye } from "../icons";
 // import { logo } from '../Components/Header/data'
 // import { async } from '@firebase/util';
 import {
@@ -21,6 +22,7 @@ function Login(props) {
   const [loginPassword, setLoginPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loginShowPassword, setLoginShowPassword] = useState(false);
 
   const [user, setUser] = useState({});
 
@@ -81,8 +83,9 @@ function Login(props) {
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
-    // console.log(showPassword, "show password")
-  }
+    console.log(showPassword, "show password");
+    console.log("hello");
+  };
 
   return (
     <>
@@ -105,18 +108,24 @@ function Login(props) {
             value={registerEmail}
             onChange={(e) => setRegisterEmail(e.target.value)}
           />
-          <input
-            id="emailPassword"
-            type="password"
-            value={registerPassword}
-            placeholder="Password..."
-            onChange={(e) => setRegisterPassword(e.target.value)}
-          />
-          {showPassword ? (
-            <button onClick={togglePassword}>{openEye}</button>
-          ) : (
-            <button onClick={togglePassword}>{closeEye}</button>
-          )}
+          <div className="password-box">
+            <input
+              id="emailPassword"
+              type={!showPassword ? "password" : "text"}
+              value={registerPassword}
+              placeholder="Password..."
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
+            {showPassword ? (
+              <button className="eye-icon" onClick={togglePassword}>
+                {<FaEye />}
+              </button>
+            ) : (
+              <button className="eye-icon" onClick={togglePassword}>
+                {<FaEyeSlash />}
+              </button>
+            )}
+          </div>
           <button id="loginBtn" onClick={Register}>
             Create User
           </button>
@@ -130,12 +139,23 @@ function Login(props) {
             placeholder="Email..."
             onChange={(e) => setLoginEmail(e.target.value)}
           />
-          <input
-            id="loginPassword"
-            type="password"
-            placeholder="Password..."
-            onChange={(e) => setLoginPassword(e.target.value)}
-          />
+          <div className="password-box">
+            <input
+              id="loginPassword"
+              type={!loginShowPassword ? "password" : "text"}
+              placeholder="Password..."
+              onChange={(e) => setLoginPassword(e.target.value)}
+            />
+            {loginShowPassword ? (
+              <button className="eye-icon" onClick={() => setLoginShowPassword(!loginShowPassword)}>
+                {<FaEye />}
+              </button>
+            ) : (
+              <button className="eye-icon" onClick={() => setLoginShowPassword(!loginShowPassword)}>
+                {<FaEyeSlash />}
+              </button>
+            )}
+          </div>
           <button id="loginBtn" onClick={Login}>
             Login
           </button>
