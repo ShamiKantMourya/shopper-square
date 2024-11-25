@@ -1,17 +1,6 @@
 {
   "hosting": {
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      }
-    ],
-    "public": "y",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
